@@ -1,0 +1,36 @@
+---
+import Facebook from './icons/Facebook.astro';
+import Twitter from './icons/Twitter.astro';
+import Instagram from './icons/Instagram.astro';
+import LinkedIn from './icons/LinkedIn.astro';
+import WhatsAppIcon from './icons/WhatsApp.astro';
+import { socialLinks } from '../data/social-links';
+
+interface Props {
+  class?: string;
+  iconClass?: string;
+}
+
+const { class: className = '', iconClass = 'w-5 h-5' } = Astro.props;
+
+const links = [
+  { href: socialLinks.facebook, Icon: Facebook, label: 'Facebook' },
+  { href: socialLinks.twitter, Icon: Twitter, label: 'Twitter' },
+  { href: socialLinks.instagram, Icon: Instagram, label: 'Instagram' },
+  { href: socialLinks.linkedin, Icon: LinkedIn, label: 'LinkedIn' },
+  { href: socialLinks.whatsapp, Icon: WhatsAppIcon, label: 'WhatsApp' },
+];
+---
+<div class={`flex items-center gap-3 ${className}`}>
+  {links.map(({ href, Icon, label }) => (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      class="text-text-secondary hover:text-accent-cyan transition-colors duration-300"
+    >
+      <Icon class={iconClass} />
+    </a>
+  ))}
+</div>

@@ -1,0 +1,54 @@
+---
+import Facebook from './icons/Facebook.astro';
+import Twitter from './icons/Twitter.astro';
+import Instagram from './icons/Instagram.astro';
+import LinkedIn from './icons/LinkedIn.astro';
+
+interface Props {
+  name: string;
+  role: string;
+  image: string;
+  social: Record<string, string>;
+  delay?: string;
+}
+
+const { name, role, image, social, delay = '0ms' } = Astro.props;
+
+const socialIcons: Record<string, any> = {
+  facebook: Facebook,
+  twitter: Twitter,
+  instagram: Instagram,
+  linkedin: LinkedIn,
+};
+---
+<div class="scroll-reveal" style={`transition-delay: ${delay}`}>
+  <div class="glass glass-hover p-8 flex flex-col items-center text-center group">
+    <!-- Avatar with gradient border -->
+    <div class="gradient-border mb-6">
+      <div class="w-32 h-32 rounded-full overflow-hidden bg-bg-secondary flex items-center justify-center">
+        <svg class="w-16 h-16 text-text-secondary/30" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+      </div>
+    </div>
+
+    <h3 class="text-xl font-bold text-text-primary">{name}</h3>
+    <p class="text-sm text-accent-cyan mt-1">{role}</p>
+
+    <!-- Social links - reveal on hover -->
+    <div class="flex items-center gap-3 mt-5 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+      {Object.entries(social).map(([platform, url]) => {
+        const Icon = socialIcons[platform];
+        return Icon ? (
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={platform}
+            class="w-9 h-9 flex items-center justify-center rounded-full bg-border-glass/50 text-text-secondary hover:text-accent-cyan hover:bg-accent-cyan/10 transition-all duration-300"
+          >
+            <Icon class="w-4 h-4" />
+          </a>
+        ) : null;
+      })}
+    </div>
+  </div>
+</div>

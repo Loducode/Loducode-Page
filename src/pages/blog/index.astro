@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ScrollReveal from '../../components/ScrollReveal.astro';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<Layout title="Blog" description="Artículos sobre desarrollo de software, tecnología y tendencias digitales.">
+  <section class="pt-28 pb-20 lg:pt-36 lg:pb-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <SectionHeading
+          subtitle="Blog"
+          title="Todos los Artículos"
+          description="Explora nuestros artículos sobre tecnología y desarrollo"
+        />
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.map((post, i) => (
+          <BlogCard
+            title={post.data.title}
+            date={post.data.date}
+            author={post.data.author}
+            image={post.data.image}
+            excerpt={post.data.excerpt}
+            category={post.data.category}
+            slug={post.id}
+            delay={`${i * 100}ms`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

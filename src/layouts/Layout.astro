@@ -1,0 +1,103 @@
+---
+import '../app.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'Software a la Medida con IA y Blockchain',
+  description = 'Loducode S.A.S. potencia empresas con software a la medida, Inteligencia Artificial y Blockchain. Mas de 50 proyectos entregados en Colombia y Latinoamerica.',
+  image = '/og-image.jpg',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title} | Loducode S.A.S.</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="Desarrollo de Software, Inteligencia Artificial, Blockchain, Software a la Medida, Villavicencio, Colombia, IA, Web3, Apps, Python, Django, React, Flutter, Loducode" />
+  <meta name="author" content="Cristian Dulcey - www.loducode.com" />
+  <link rel="canonical" href={canonicalURL} />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={`${title} | Loducode S.A.S.`} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={new URL(image, Astro.site)} />
+  <meta property="og:locale" content="es_CO" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={`${title} | Loducode S.A.S.`} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={new URL(image, Astro.site)} />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/images/isotipo-blue.png" />
+</head>
+<body class="bg-bg-primary text-text-primary antialiased">
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+  <WhatsAppButton />
+
+  <script>
+    // Scroll reveal observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll('.scroll-reveal').forEach((el) => observer.observe(el));
+
+    // Header scroll effect
+    const header = document.getElementById('site-header');
+    if (header) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('header-solid');
+        } else {
+          header.classList.remove('header-solid');
+        }
+      });
+    }
+
+    // 3D tilt effect on cards (desktop only)
+    if (window.matchMedia('(hover: hover)').matches) {
+      document.querySelectorAll('.tilt-card').forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const el = card as HTMLElement;
+          const rect = el.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -8;
+          const rotateY = ((x - centerX) / centerX) * 8;
+          el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        card.addEventListener('mouseleave', () => {
+          (card as HTMLElement).style.transform = '';
+        });
+      });
+    }
+  </script>
+</body>
+</html>

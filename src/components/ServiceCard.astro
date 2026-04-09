@@ -1,0 +1,56 @@
+---
+import AI from './icons/services/AI.astro';
+import Blockchain from './icons/services/Blockchain.astro';
+import Asesoria from './icons/services/Asesoria.astro';
+import Auditoria from './icons/services/Auditoria.astro';
+import Chatbot from './icons/services/Chatbot.astro';
+import Mobile from './icons/services/Mobile.astro';
+import Web from './icons/services/Web.astro';
+import Inventario from './icons/services/Inventario.astro';
+import IoTIcon from './icons/services/IoT.astro';
+import Maintenance from './icons/services/Maintenance.astro';
+import Payments from './icons/services/Payments.astro';
+import Speech from './icons/services/Speech.astro';
+import Streaming from './icons/services/Streaming.astro';
+import Videogames from './icons/services/Videogames.astro';
+
+const iconMap: Record<string, any> = {
+  ai: AI,
+  blockchain: Blockchain,
+  asesoria: Asesoria,
+  auditoria: Auditoria,
+  chatbot: Chatbot,
+  mobile: Mobile,
+  web: Web,
+  inventario: Inventario,
+  iot: IoTIcon,
+  maintenance: Maintenance,
+  payments: Payments,
+  speech: Speech,
+  streaming: Streaming,
+  videogames: Videogames,
+};
+
+interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  delay?: string;
+}
+
+const { title, description, icon, delay = '0ms' } = Astro.props;
+const IconComponent = iconMap[icon];
+---
+<div class="scroll-reveal" style={`transition-delay: ${delay}`}>
+  <div class="tilt-card glass glass-hover p-6 lg:p-8 h-full flex flex-col items-start gap-4 group">
+    <!-- Icon with gradient glow -->
+    <div class="relative">
+      <div class="absolute inset-0 bg-gradient-to-r from-accent-cyan to-accent-purple rounded-xl blur-lg opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+      <div class="relative w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-br from-accent-cyan/10 to-accent-purple/10 border border-border-glass text-accent-cyan group-hover:text-accent-purple transition-colors duration-500">
+        {IconComponent && <IconComponent class="w-7 h-7" />}
+      </div>
+    </div>
+    <h3 class="text-lg font-semibold text-text-primary">{title}</h3>
+    <p class="text-sm text-text-secondary leading-relaxed">{description}</p>
+  </div>
+</div>

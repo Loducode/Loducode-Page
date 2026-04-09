@@ -1,0 +1,34 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import TeamCard from './TeamCard.astro';
+import ScrollReveal from './ScrollReveal.astro';
+import { team } from '../data/team';
+---
+<section id="equipo" class="py-20 lg:py-28 bg-bg-secondary relative">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border-glass to-transparent"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border-glass to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <ScrollReveal>
+      <SectionHeading
+        subtitle="Las personas detras del codigo"
+        title="Quienes Lideran Loducode"
+        description="Un equipo obsesionado con la excelencia tecnica y comprometido con el exito de cada proyecto"
+      />
+    </ScrollReveal>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-8 max-w-2xl mx-auto">
+      {team.map((member, i) => (
+        <div class="w-full sm:w-1/2">
+          <TeamCard
+            name={member.name}
+            role={member.role}
+            image={member.image}
+            social={member.social}
+            delay={`${i * 150}ms`}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import SectionHeading from './SectionHeading.astro';
+import ProjectCard from './ProjectCard.astro';
+import ScrollReveal from './ScrollReveal.astro';
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<section id="proyectos" class="py-20 lg:py-28 relative">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border-glass to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <ScrollReveal>
+      <SectionHeading
+        subtitle="Resultados reales"
+        title="Proyectos Que Hablan Por Si Solos"
+        description="Cada proyecto es una empresa que decidio transformar su operacion con tecnologia. Estos son algunos de los resultados"
+      />
+    </ScrollReveal>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project, i) => (
+        <ProjectCard
+          title={project.data.title}
+          date={project.data.date}
+          image={project.data.image}
+          category={project.data.category}
+          description={project.data.description}
+          slug={project.id}
+          delay={`${i * 100}ms`}
+        />
+      ))}
+    </div>
+  </div>
+</section>

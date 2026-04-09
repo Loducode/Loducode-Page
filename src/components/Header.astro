@@ -1,0 +1,110 @@
+---
+import SocialLinks from './SocialLinks.astro';
+import MenuIcon from './icons/Menu.astro';
+import CloseIcon from './icons/Close.astro';
+
+const navLinks = [
+  { href: '/#inicio', label: 'Inicio' },
+  { href: '/#problemas', label: 'Retos' },
+  { href: '/#soluciones', label: 'Soluciones' },
+  { href: '/#casos', label: 'Casos de Exito' },
+  { href: '/#proceso', label: 'Proceso' },
+  { href: '/#contacto', label: 'Contacto' },
+];
+---
+<header
+  id="site-header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex-shrink-0">
+        <img src="/images/logo-white.png" alt="Loducode S.A.S." class="h-8 lg:h-10 w-auto" />
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-8">
+        {navLinks.map(({ href, label }) => (
+          <a
+            href={href}
+            class="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-gradient-to-r after:from-accent-cyan after:to-accent-purple after:transition-all after:duration-300 hover:after:w-full"
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- Desktop Social -->
+      <div class="hidden lg:block">
+        <SocialLinks iconClass="w-4 h-4" />
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden text-text-primary p-2"
+        aria-label="Abrir menú"
+      >
+        <MenuIcon class="w-6 h-6" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 bg-bg-primary/95 backdrop-blur-xl z-50 hidden flex-col items-center justify-center gap-6"
+  >
+    <button
+      id="mobile-menu-close"
+      class="absolute top-5 right-5 text-text-primary p-2"
+      aria-label="Cerrar menú"
+    >
+      <CloseIcon class="w-7 h-7" />
+    </button>
+    {navLinks.map(({ href, label }) => (
+      <a
+        href={href}
+        class="mobile-nav-link text-2xl font-semibold text-text-secondary hover:text-text-primary transition-colors duration-300"
+      >
+        {label}
+      </a>
+    ))}
+    <div class="mt-4">
+      <SocialLinks iconClass="w-5 h-5" />
+    </div>
+  </div>
+</header>
+
+<style>
+  :global(.header-solid) {
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+</style>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const close = document.getElementById('mobile-menu-close');
+
+  btn?.addEventListener('click', () => {
+    menu?.classList.remove('hidden');
+    menu?.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  });
+
+  function closeMenu() {
+    menu?.classList.add('hidden');
+    menu?.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  close?.addEventListener('click', closeMenu);
+  menu?.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+</script>

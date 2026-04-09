@@ -1,0 +1,154 @@
+---
+import { getCollection } from 'astro:content';
+import SectionHeading from './SectionHeading.astro';
+import ScrollReveal from './ScrollReveal.astro';
+import { casosExito } from '../data/casos-exito';
+
+const [destacado, ...resto] = casosExito;
+
+const featuredSlugs = casosExito.map((c) => c.slug);
+const otrosProyectos = (await getCollection('projects'))
+  .filter((p) => !featuredSlugs.includes(p.id))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 6);
+---
+<section id="casos" class="py-20 lg:py-28 relative">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border-glass to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <ScrollReveal>
+      <SectionHeading
+        subtitle="Resultados reales"
+        title="Empresas Que Ya Se Transformaron"
+        description="No hablamos de teoria. Estos son proyectos reales con resultados medibles"
+      />
+    </ScrollReveal>
+
+    <!-- Featured case study -->
+    <ScrollReveal delay="100ms">
+      <a href={`/projects/${destacado.slug}/`} class="group block mb-8">
+        <div class="glass glass-hover overflow-hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-2">
+            <!-- Image placeholder -->
+            <div class="relative h-64 lg:h-auto bg-gradient-to-br from-accent-cyan/10 to-accent-purple/10 flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-6xl font-extrabold gradient-text mb-2">{destacado.title}</div>
+                <span class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-cyan/20 text-accent-cyan">
+                  {destacado.category}
+                </span>
+              </div>
+            </div>
+            <!-- Content -->
+            <div class="p-8 lg:p-10 flex flex-col justify-center">
+              <span class="text-sm text-text-secondary mb-2">{destacado.client}</span>
+              <h3 class="text-2xl lg:text-3xl font-bold text-text-primary mb-3 group-hover:text-accent-cyan transition-colors duration-300">
+                {destacado.headline}
+              </h3>
+              <p class="text-text-secondary leading-relaxed mb-6">{destacado.description}</p>
+              <!-- Metrics -->
+              <div class="grid grid-cols-3 gap-4 mb-6">
+                {destacado.metrics.map((metric) => (
+                  <div class="text-center p-3 rounded-lg bg-bg-primary/50">
+                    <div class="text-lg font-bold gradient-text">{metric.value}</div>
+                    <div class="text-xs text-text-secondary mt-1">{metric.label}</div>
+                  </div>
+                ))}
+              </div>
+              <div class="flex items-center gap-2 text-sm font-medium text-accent-cyan group-hover:gap-3 transition-all duration-300">
+                Ver caso completo
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </ScrollReveal>
+
+    <!-- Secondary cases -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {resto.map((caso, i) => (
+        <ScrollReveal delay={`${(i + 2) * 100}ms`}>
+          <a href={`/projects/${caso.slug}/`} class="group block h-full">
+            <div class="glass glass-hover p-6 lg:p-8 h-full flex flex-col">
+              <span class="inline-block w-fit px-3 py-1 text-xs font-semibold rounded-full bg-accent-purple/20 text-accent-purple mb-4">
+                {caso.category}
+              </span>
+              <span class="text-xs text-text-secondary mb-2">{caso.client}</span>
+              <h3 class="text-lg font-bold text-text-primary mb-2 group-hover:text-accent-cyan transition-colors duration-300">
+                {caso.headline}
+              </h3>
+              <p class="text-sm text-text-secondary leading-relaxed mb-5 flex-1">{caso.description}</p>
+              <!-- Metrics -->
+              <div class="space-y-2 mb-5">
+                {caso.metrics.map((metric) => (
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="text-text-secondary">{metric.label}</span>
+                    <span class="font-semibold text-text-primary">{metric.value}</span>
+                  </div>
+                ))}
+              </div>
+              <div class="flex items-center gap-2 text-sm font-medium text-accent-cyan group-hover:gap-3 transition-all duration-300 mt-auto">
+                Ver caso completo
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </div>
+            </div>
+          </a>
+        </ScrollReveal>
+      ))}
+    </div>
+
+    <!-- More projects -->
+    {otrosProyectos.length > 0 && (
+      <div class="mt-12">
+        <ScrollReveal>
+          <h3 class="text-xl font-bold text-text-primary text-center mb-8">Mas proyectos entregados</h3>
+        </ScrollReveal>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {otrosProyectos.map((project, i) => (
+            <ScrollReveal delay={`${(i + 5) * 80}ms`}>
+              <a href={`/projects/${project.id}/`} class="group block h-full">
+                <div class="glass glass-hover p-6 h-full flex flex-col">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-purple/20 text-accent-purple">
+                      {project.data.category}
+                    </span>
+                    <span class="text-xs text-text-secondary">
+                      {new Intl.DateTimeFormat('es-CO', { year: 'numeric', month: 'short' }).format(project.data.date)}
+                    </span>
+                  </div>
+                  <h4 class="text-lg font-semibold text-text-primary group-hover:text-accent-cyan transition-colors duration-300 mb-2">
+                    {project.data.title}
+                  </h4>
+                  <p class="text-sm text-text-secondary leading-relaxed flex-1">{project.data.description}</p>
+                  <div class="mt-4 flex items-center gap-2 text-sm font-medium text-accent-cyan group-hover:gap-3 transition-all duration-300">
+                    Ver proyecto
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </div>
+                </div>
+              </a>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Link to all projects -->
+    <ScrollReveal delay="500ms">
+      <div class="text-center mt-10">
+        <a
+          href="/projects/"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-full glass glass-hover text-sm font-medium text-text-primary"
+        >
+          Ver todos los proyectos
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </a>
+      </div>
+    </ScrollReveal>
+  </div>
+</section>

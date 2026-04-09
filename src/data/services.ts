@@ -1,0 +1,86 @@
+export const services = [
+  {
+    id: 'inteligencia-artificial',
+    title: 'Inteligencia Artificial',
+    description: 'Automatiza procesos, predice resultados y toma decisiones mas inteligentes. Integramos IA generativa, machine learning y vision por computadora directamente en tu operacion.',
+    icon: 'ai',
+  },
+  {
+    id: 'blockchain',
+    title: 'Blockchain',
+    description: 'Transparencia total y seguridad inquebrantable para tus transacciones. Smart contracts, tokenizacion de activos y soluciones Web3 que eliminan intermediarios.',
+    icon: 'blockchain',
+  },
+  {
+    id: 'asesorias',
+    title: 'Asesorias',
+    description: 'Antes de escribir una linea de codigo, validamos tu idea. Recibe una hoja de ruta clara con las decisiones tecnicas que van a ahorrarte tiempo y dinero.',
+    icon: 'asesoria',
+  },
+  {
+    id: 'auditorias',
+    title: 'Auditorias',
+    description: 'Descubre exactamente que esta frenando tu sistema actual. Identificamos cuellos de botella, vulnerabilidades y oportunidades de mejora con un diagnostico accionable.',
+    icon: 'auditoria',
+  },
+  {
+    id: 'chatbots',
+    title: 'Chatbots',
+    description: 'Atiende a tus clientes 24/7 sin aumentar tu nomina. Chatbots con IA que resuelven dudas, cierran ventas y escalan solo cuando es necesario.',
+    icon: 'chatbot',
+  },
+  {
+    id: 'desarrollo-movil',
+    title: 'Desarrollo movil',
+    description: 'Tu negocio en el bolsillo de tus clientes. Apps nativas para iOS y Android con rendimiento solido y experiencia de usuario que genera retencion.',
+    icon: 'mobile',
+  },
+  {
+    id: 'desarrollo-web',
+    title: 'Desarrollo web',
+    description: 'Sitios y plataformas web que convierten visitantes en clientes. Rapidos, responsivos y construidos para posicionar tu marca desde el primer clic.',
+    icon: 'web',
+  },
+  {
+    id: 'inventarios',
+    title: 'Inventarios',
+    description: 'Control total sobre tu stock en tiempo real. Sistemas integrados con lectores y dispositivos que eliminan errores manuales y optimizan tu cadena de suministro.',
+    icon: 'inventario',
+  },
+  {
+    id: 'iot',
+    title: 'IoT',
+    description: 'Conecta tus equipos, sensores y espacios fisicos a una plataforma inteligente. Datos en tiempo real que te permiten actuar antes de que los problemas ocurran.',
+    icon: 'iot',
+  },
+  {
+    id: 'mantenimiento',
+    title: 'Mantenimiento de sistemas',
+    description: 'Cero caidas, cero sorpresas. Mantenemos tu software actualizado, seguro y funcionando al maximo para que tu equipo nunca pierda productividad.',
+    icon: 'maintenance',
+  },
+  {
+    id: 'pagos',
+    title: 'Pagos en linea',
+    description: 'Cobra mas rapido y sin fricciones. Integramos pasarelas de pago seguras en tu plataforma para que tus clientes paguen en segundos, no en pasos.',
+    icon: 'payments',
+  },
+  {
+    id: 'speech-to-text',
+    title: 'Speech to text',
+    description: 'Convierte voz en texto con precision quirurgica. Acelera la documentacion, mejora la accesibilidad y libera a tu equipo de la transcripcion manual.',
+    icon: 'speech',
+  },
+  {
+    id: 'transmision',
+    title: 'Transmision',
+    description: 'Llega a miles de personas en tiempo real con tu propia plataforma de streaming. Transmite eventos, capacitaciones o contenido sin depender de terceros.',
+    icon: 'streaming',
+  },
+  {
+    id: 'videojuegos',
+    title: 'Videojuegos',
+    description: 'Experiencias interactivas que capturan la atencion. Desde gamificacion empresarial hasta juegos completos que posicionan tu marca de forma memorable.',
+    icon: 'videogames',
+  },
+];

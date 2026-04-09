@@ -1,0 +1,48 @@
+---
+interface Props {
+  title: string;
+  date: Date;
+  image: string;
+  category: string;
+  description: string;
+  slug: string;
+  delay?: string;
+}
+
+const { title, date, image, category, description, slug, delay = '0ms' } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('es-CO', {
+  year: 'numeric',
+  month: 'short',
+}).format(date);
+---
+<div class="scroll-reveal" style={`transition-delay: ${delay}`}>
+  <a href={`/projects/${slug}/`} class="group block h-full">
+    <div class="glass glass-hover h-full overflow-hidden flex flex-col">
+      <!-- Image placeholder -->
+      <div class="relative h-48 bg-gradient-to-br from-accent-purple/10 to-accent-cyan/10 overflow-hidden">
+        <div class="absolute inset-0 flex items-center justify-center text-text-secondary/30">
+          <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+        </div>
+        <span class="absolute top-3 left-3 px-3 py-1 text-xs font-semibold rounded-full bg-accent-purple/20 text-accent-purple backdrop-blur-sm">
+          {category}
+        </span>
+        <span class="absolute top-3 right-3 px-3 py-1 text-xs rounded-full bg-bg-primary/50 text-text-secondary backdrop-blur-sm">
+          {formattedDate}
+        </span>
+      </div>
+
+      <!-- Content -->
+      <div class="p-6 flex flex-col flex-1">
+        <h3 class="text-lg font-semibold text-text-primary group-hover:text-accent-purple transition-colors duration-300 mb-2">
+          {title}
+        </h3>
+        <p class="text-sm text-text-secondary leading-relaxed flex-1">{description}</p>
+        <div class="mt-4 flex items-center gap-2 text-sm font-medium text-accent-purple group-hover:gap-3 transition-all duration-300">
+          Ver proyecto
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>

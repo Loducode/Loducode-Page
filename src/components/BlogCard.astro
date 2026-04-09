@@ -1,0 +1,52 @@
+---
+interface Props {
+  title: string;
+  date: Date;
+  author: string;
+  image: string;
+  excerpt: string;
+  category: string;
+  slug: string;
+  delay?: string;
+}
+
+const { title, date, author, image, excerpt, category, slug, delay = '0ms' } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('es-CO', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+}).format(date);
+---
+<div class="scroll-reveal" style={`transition-delay: ${delay}`}>
+  <a href={`/blog/${slug}/`} class="group block h-full">
+    <div class="glass glass-hover h-full overflow-hidden flex flex-col">
+      <!-- Image placeholder -->
+      <div class="relative h-48 bg-gradient-to-br from-accent-cyan/10 to-accent-purple/10 overflow-hidden">
+        <div class="absolute inset-0 flex items-center justify-center text-text-secondary/30">
+          <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0022.5 18.75V5.25A2.25 2.25 0 0020.25 3H3.75A2.25 2.25 0 001.5 5.25v13.5A2.25 2.25 0 003.75 21z"/></svg>
+        </div>
+        <span class="absolute top-3 left-3 px-3 py-1 text-xs font-semibold rounded-full bg-accent-cyan/20 text-accent-cyan backdrop-blur-sm">
+          {category}
+        </span>
+      </div>
+
+      <!-- Content -->
+      <div class="p-6 flex flex-col flex-1">
+        <div class="flex items-center gap-3 text-xs text-text-secondary mb-3">
+          <span>{formattedDate}</span>
+          <span class="w-1 h-1 rounded-full bg-text-secondary"></span>
+          <span>{author}</span>
+        </div>
+        <h3 class="text-lg font-semibold text-text-primary group-hover:text-accent-cyan transition-colors duration-300 mb-2">
+          {title}
+        </h3>
+        <p class="text-sm text-text-secondary leading-relaxed flex-1">{excerpt}</p>
+        <div class="mt-4 flex items-center gap-2 text-sm font-medium text-accent-cyan group-hover:gap-3 transition-all duration-300">
+          Leer más
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
