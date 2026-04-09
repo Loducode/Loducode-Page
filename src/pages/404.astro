@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations, getLocalePath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+<Layout title={t('404.title')}>
+  <section class="min-h-screen flex items-center justify-center relative">
+    <!-- Background -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 bg-gradient-to-b from-bg-primary via-accent-cyan/3 to-bg-primary"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-accent-cyan/5 blur-3xl"></div>
+    </div>
+
+    <div class="text-center px-4">
+      <!-- Big 404 -->
+      <div class="relative inline-block mb-8">
+        <span class="text-[120px] sm:text-[180px] lg:text-[220px] font-extrabold leading-none gradient-text opacity-20">404</span>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="glass rounded-2xl p-6">
+            <svg class="w-16 h-16 text-accent-cyan" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl font-bold text-text-primary mb-4">
+        {t('404.title')}
+      </h1>
+      <p class="text-text-secondary text-lg max-w-md mx-auto mb-10">
+        {t('404.description')}
+      </p>
+
+      <a
+        href={getLocalePath('/', lang)}
+        class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-accent-cyan to-accent-purple text-white font-semibold text-sm hover:scale-105 hover:shadow-[0_0_30px_rgba(56,189,248,0.4)] transition-all duration-300"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+        {t('404.cta')}
+      </a>
+    </div>
+  </section>
+</Layout>
