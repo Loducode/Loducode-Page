@@ -26,8 +26,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta name="generator" content={Astro.generator} />
   <title>{title} | Loducode S.A.S.</title>
   <meta name="description" content={description} />
-  <meta name="keywords" content="Desarrollo de Software, Inteligencia Artificial, Blockchain, Software a la Medida, Villavicencio, Colombia, IA, Web3, Apps, Python, Django, React, Flutter, Loducode" />
-  <meta name="author" content="Cristian Dulcey - www.loducode.com" />
+  <meta name="keywords" content="software a la medida, desarrollo de software, inteligencia artificial, automatizacion empresarial, chatbot IA, aplicaciones moviles, plataformas web, blockchain, SaaS, Villavicencio, Colombia, Loducode" />
+  <meta name="author" content="Loducode S.A.S." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="robots" content="index, follow" />
   <link rel="canonical" href={canonicalURL} />
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -35,14 +37,48 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <meta property="og:title" content={`${title} | Loducode S.A.S.`} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={new URL(image, Astro.site)} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="es_CO" />
+  <meta property="og:site_name" content="Loducode S.A.S." />
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@loducode" />
+  <meta name="twitter:creator" content="@loducode" />
   <meta name="twitter:title" content={`${title} | Loducode S.A.S.`} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={new URL(image, Astro.site)} />
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/images/isotipo-blue.png" />
+  <link rel="apple-touch-icon" href="/images/isotipo-blue.png" />
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Loducode S.A.S.",
+    "url": "https://loducode.com",
+    "logo": "https://loducode.com/images/logo.png",
+    "description": "Software a la medida, Inteligencia Artificial y automatizacion para empresas colombianas. Mas de 50 proyectos entregados.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle 19c # 19-20",
+      "addressLocality": "Villavicencio",
+      "addressRegion": "Meta",
+      "addressCountry": "CO"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+57-316-629-9222",
+      "contactType": "sales",
+      "availableLanguage": "Spanish"
+    },
+    "sameAs": [
+      "https://www.facebook.com/loducode/",
+      "https://www.twitter.com/loducode/",
+      "https://www.instagram.com/loducode/",
+      "https://www.linkedin.com/company/loducode/"
+    ]
+  })} />
 </head>
 <body class="bg-bg-primary text-text-primary antialiased">
   <Header />

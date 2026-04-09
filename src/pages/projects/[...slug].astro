@@ -19,8 +19,28 @@ const formattedDate = new Intl.DateTimeFormat('es-CO', {
 }).format(project.data.date);
 ---
 <Layout title={project.data.title} description={project.data.description}>
+  <!-- Breadcrumb Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://loducode.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Proyectos", "item": "https://loducode.com/projects/" },
+      { "@type": "ListItem", "position": 3, "name": project.data.title }
+    ]
+  })} />
   <article class="pt-28 pb-20 lg:pt-36 lg:pb-28">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Breadcrumb nav -->
+      <nav class="text-xs text-text-secondary mb-6" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-1.5">
+          <li><a href="/" class="hover:text-accent-cyan transition-colors">Inicio</a></li>
+          <li>/</li>
+          <li><a href="/projects/" class="hover:text-accent-cyan transition-colors">Proyectos</a></li>
+          <li>/</li>
+          <li class="text-text-primary truncate max-w-[200px]">{project.data.title}</li>
+        </ol>
+      </nav>
       <!-- Header -->
       <div class="mb-10">
         <a href="/projects/" class="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-accent-cyan transition-colors mb-6">

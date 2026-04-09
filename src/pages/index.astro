@@ -12,6 +12,51 @@ import CTAFinal from '../components/CTAFinal.astro';
   title="Software a la Medida para Empresas | IA, Automatizacion y Datos"
   description="Loducode transforma empresas colombianas con software a la medida, IA y automatizacion. Mas de 50 proyectos entregados. Agenda una llamada gratis."
 >
+  <!-- LocalBusiness + Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Loducode S.A.S.",
+    "url": "https://loducode.com",
+    "logo": "https://loducode.com/images/logo.png",
+    "image": "https://loducode.com/images/logo.png",
+    "description": "Software a la medida, Inteligencia Artificial y automatizacion para empresas colombianas.",
+    "telephone": "+57-316-629-9222",
+    "email": "info@loducode.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle 19c # 19-20",
+      "addressLocality": "Villavicencio",
+      "addressRegion": "Meta",
+      "postalCode": "500001",
+      "addressCountry": "CO"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 4.1420,
+      "longitude": -73.6266
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Colombia"
+    },
+    "priceRange": "$$",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de desarrollo de software",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Desarrollo de Software a la Medida", "description": "Plataformas web, apps moviles y sistemas empresariales disenados para tu negocio" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Inteligencia Artificial y Chatbots", "description": "Chatbots con IA, modelos predictivos y automatizacion inteligente de procesos" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Plataformas SaaS", "description": "Sistemas multi-tenant con suscripciones, roles y escalabilidad en la nube" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Blockchain y Web3", "description": "Smart contracts, NFTs, tokens y soluciones descentralizadas" } }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "30"
+    }
+  })} />
   <Hero />
   <Problemas />
   <Soluciones />
