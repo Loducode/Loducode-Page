@@ -1,7 +1,12 @@
 ---
 import SectionHeading from './SectionHeading.astro';
 import ScrollReveal from './ScrollReveal.astro';
-import { pasos } from '../data/proceso';
+import { getPasos } from '../data/proceso';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const pasos = getPasos(lang);
 ---
 <section id="proceso" class="py-20 lg:py-28 bg-bg-secondary relative">
   <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border-glass to-transparent"></div>
@@ -10,9 +15,9 @@ import { pasos } from '../data/proceso';
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <ScrollReveal>
       <SectionHeading
-        subtitle="Simple y transparente"
-        title="Cómo Trabajamos Contigo"
-        description="Trabajar con nosotros es fácil. En 4 pasos pasas de la idea al producto"
+        subtitle={t('process.subtitle')}
+        title={t('process.title')}
+        description={t('process.description')}
       />
     </ScrollReveal>
 
@@ -32,7 +37,7 @@ import { pasos } from '../data/proceso';
                 </svg>
               </div>
               <!-- Step number -->
-              <span class="text-xs font-bold text-accent-cyan uppercase tracking-widest mb-2">Paso {paso.step}</span>
+              <span class="text-xs font-bold text-accent-cyan uppercase tracking-widest mb-2">{t('process.step')} {paso.step}</span>
               <h3 class="text-xl font-bold text-text-primary mb-3">{paso.title}</h3>
               <p class="text-sm text-text-secondary leading-relaxed mb-4">{paso.description}</p>
               <!-- Step mini illustration -->

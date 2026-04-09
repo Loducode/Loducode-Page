@@ -1,0 +1,55 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const t = useTranslations('en');
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+}).format(project.data.date);
+---
+<Layout title={project.data.title} description={project.data.description}>
+  <article class="pt-28 pb-20 lg:pt-36 lg:pb-28">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Breadcrumb nav -->
+      <nav class="text-xs text-text-secondary mb-6" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-1.5">
+          <li><a href="/en/" class="hover:text-accent-cyan transition-colors">{t('breadcrumb.home')}</a></li>
+          <li>/</li>
+          <li><a href="/en/projects/" class="hover:text-accent-cyan transition-colors">{t('breadcrumb.projects')}</a></li>
+          <li>/</li>
+          <li class="text-text-primary truncate max-w-[200px]">{project.data.title}</li>
+        </ol>
+      </nav>
+      <div class="mb-10">
+        <a href="/en/projects/" class="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-accent-cyan transition-colors mb-6">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+          {t('projects.back')}
+        </a>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-accent-purple/20 text-accent-purple">
+            {project.data.category}
+          </span>
+          <span class="text-sm text-text-secondary">{formattedDate}</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">{project.data.title}</h1>
+        <p class="mt-4 text-lg text-text-secondary">{project.data.description}</p>
+      </div>
+      <div class="prose prose-invert prose-lg max-w-none prose-headings:gradient-text prose-a:text-accent-cyan prose-a:no-underline hover:prose-a:underline prose-strong:text-text-primary">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Layout>

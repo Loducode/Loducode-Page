@@ -1,7 +1,12 @@
 ---
 import ScrollReveal from './ScrollReveal.astro';
 import SectionHeading from './SectionHeading.astro';
-import { testimonials } from '../data/testimonials';
+import { getTestimonials } from '../data/testimonials';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const testimonials = getTestimonials(lang);
 ---
 <section id="testimonios" class="py-20 lg:py-28 bg-bg-secondary relative overflow-hidden">
   <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border-glass to-transparent"></div>
@@ -14,8 +19,8 @@ import { testimonials } from '../data/testimonials';
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <ScrollReveal>
       <SectionHeading
-        subtitle="Confianza comprobada"
-        title="Ellos Ya Transformaron Su Negocio Con Nosotros"
+        subtitle={t('testimonials.subtitle')}
+        title={t('testimonials.title')}
       />
     </ScrollReveal>
 

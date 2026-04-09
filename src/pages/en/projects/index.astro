@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import ProjectCard from '../../../components/ProjectCard.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import ScrollReveal from '../../../components/ScrollReveal.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const t = useTranslations('en');
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<Layout title={t('projects.pageTitle')} description={t('projects.pageDescription')}>
+  <section class="pt-28 pb-20 lg:pt-36 lg:pb-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <SectionHeading
+          subtitle={t('projects.subtitle')}
+          title={t('projects.heading')}
+          description={t('projects.headingDesc')}
+        />
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project, i) => (
+          <ProjectCard
+            title={project.data.title}
+            date={project.data.date}
+            image={project.data.image}
+            category={project.data.category}
+            description={project.data.description}
+            slug={project.id}
+            delay={`${i * 100}ms`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

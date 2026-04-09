@@ -1,4 +1,6 @@
 ---
+import { getLangFromUrl, useTranslations, getLocalePath } from '../i18n/utils';
+
 interface Props {
   title: string;
   date: Date;
@@ -11,13 +13,17 @@ interface Props {
 
 const { title, date, image, category, description, slug, delay = '0ms' } = Astro.props;
 
-const formattedDate = new Intl.DateTimeFormat('es-CO', {
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const dateLocale = lang === 'en' ? 'en-US' : 'es-CO';
+
+const formattedDate = new Intl.DateTimeFormat(dateLocale, {
   year: 'numeric',
   month: 'short',
 }).format(date);
 ---
 <div class="scroll-reveal" style={`transition-delay: ${delay}`}>
-  <a href={`/projects/${slug}/`} class="group block h-full">
+  <a href={getLocalePath(`/projects/${slug}/`, lang)} class="group block h-full">
     <div class="glass glass-hover h-full overflow-hidden flex flex-col">
       <!-- Dynamic illustration -->
       <div class="relative h-48 bg-gradient-to-br from-accent-purple/5 to-accent-cyan/5 overflow-hidden group-hover:from-accent-purple/10 group-hover:to-accent-cyan/10 transition-all duration-500">
@@ -86,7 +92,7 @@ const formattedDate = new Intl.DateTimeFormat('es-CO', {
         </h3>
         <p class="text-sm text-text-secondary leading-relaxed flex-1">{description}</p>
         <div class="mt-4 flex items-center gap-2 text-sm font-medium text-accent-purple group-hover:gap-3 transition-all duration-300">
-          Ver proyecto
+          {t('cases.viewProject')}
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
         </div>
       </div>

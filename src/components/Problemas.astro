@@ -1,7 +1,12 @@
 ---
 import SectionHeading from './SectionHeading.astro';
 import ScrollReveal from './ScrollReveal.astro';
-import { problemas } from '../data/problemas';
+import { getProblemas } from '../data/problemas';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const problemas = getProblemas(lang);
 ---
 <section id="problemas" class="py-20 lg:py-28 relative">
   <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border-glass to-transparent"></div>
@@ -9,9 +14,9 @@ import { problemas } from '../data/problemas';
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <ScrollReveal>
       <SectionHeading
-        subtitle="¿Esto te suena familiar?"
-        title="Los Retos Que Frenan a Tu Empresa"
-        description="Si tu empresa enfrenta alguno de estos problemas, tenemos la solución"
+        subtitle={t('problems.subtitle')}
+        title={t('problems.title')}
+        description={t('problems.description')}
       />
     </ScrollReveal>
 
@@ -72,7 +77,7 @@ import { problemas } from '../data/problemas';
               href={problema.solucion}
               class="inline-flex items-center gap-2 mt-5 text-sm font-medium text-accent-cyan group-hover:gap-3 transition-all duration-300"
             >
-              Ver como lo resolvemos
+              {t('problems.link')}
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>

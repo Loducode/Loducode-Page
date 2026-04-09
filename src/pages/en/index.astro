@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import Problemas from '../../components/Problemas.astro';
+import Soluciones from '../../components/Soluciones.astro';
+import CasosExito from '../../components/CasosExito.astro';
+import ComoTrabajamos from '../../components/ComoTrabajamos.astro';
+import Testimonios from '../../components/Testimonios.astro';
+import CTAFinal from '../../components/CTAFinal.astro';
+---
+<Layout
+  title="Custom AI Software for Businesses"
+  description="Loducode develops custom software, AI chatbots and SaaS platforms for businesses. Over 50 projects delivered in Colombia and Latin America. Schedule a free call."
+>
+  <!-- LocalBusiness + Service Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Loducode S.A.S.",
+    "url": "https://loducode.com",
+    "logo": "https://loducode.com/images/logo.png",
+    "image": "https://loducode.com/images/logo.png",
+    "description": "Custom software, Artificial Intelligence and automation for businesses in Latin America.",
+    "telephone": "+57-316-629-9222",
+    "email": "info@loducode.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Calle 19c # 19-20",
+      "addressLocality": "Villavicencio",
+      "addressRegion": "Meta",
+      "postalCode": "500001",
+      "addressCountry": "CO"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 4.1420,
+      "longitude": -73.6266
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Latin America"
+    },
+    "priceRange": "$$",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Software Development Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Software Development", "description": "Web platforms, mobile apps and enterprise systems designed for your business" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Artificial Intelligence and Chatbots", "description": "AI chatbots, predictive models and intelligent process automation" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SaaS Platforms", "description": "Multi-tenant systems with subscriptions, roles and cloud scalability" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Blockchain and Web3", "description": "Smart contracts, NFTs, tokens and decentralized solutions" } }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "30"
+    }
+  })} />
+  <Hero />
+  <Problemas />
+  <Soluciones />
+  <CasosExito />
+  <ComoTrabajamos />
+  <Testimonios />
+  <CTAFinal />
+</Layout>

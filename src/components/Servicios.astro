@@ -2,7 +2,12 @@
 import SectionHeading from './SectionHeading.astro';
 import ServiceCard from './ServiceCard.astro';
 import ScrollReveal from './ScrollReveal.astro';
-import { services } from '../data/services';
+import { getServices } from '../data/services';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const services = getServices(lang);
 ---
 <section id="servicios" class="py-20 lg:py-28 relative">
   <!-- Subtle top gradient -->
@@ -11,9 +16,9 @@ import { services } from '../data/services';
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <ScrollReveal>
       <SectionHeading
-        subtitle="Soluciones que impulsan resultados"
-        title="Lo Que Podemos Hacer Por Ti"
-        description="Cada servicio esta disenado para resolver un problema real de tu negocio, no para impresionar con tecnicismos"
+        subtitle={t('services.subtitle')}
+        title={t('services.title')}
+        description={t('services.description')}
       />
     </ScrollReveal>
 
