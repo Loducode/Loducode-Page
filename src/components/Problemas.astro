@@ -9,9 +9,9 @@ import { problemas } from '../data/problemas';
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <ScrollReveal>
       <SectionHeading
-        subtitle="Esto te suena familiar?"
+        subtitle="¿Esto te suena familiar?"
         title="Los Retos Que Frenan a Tu Empresa"
-        description="Si tu empresa enfrenta alguno de estos problemas, tenemos la solucion"
+        description="Si tu empresa enfrenta alguno de estos problemas, tenemos la solución"
       />
     </ScrollReveal>
 
@@ -66,7 +66,7 @@ import { problemas } from '../data/problemas';
                 )}
               </div>
             </div>
-            <h3 class="text-xl font-bold text-text-primary mb-3">{problema.title}</h3>
+            <p class="text-xl font-bold text-text-primary mb-3">{problema.title}</p>
             <p class="text-text-secondary leading-relaxed flex-1">{problema.description}</p>
             <a
               href={problema.solucion}

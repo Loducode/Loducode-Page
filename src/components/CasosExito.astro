@@ -20,7 +20,7 @@ const otrosProyectos = (await getCollection('projects'))
       <SectionHeading
         subtitle="Resultados reales"
         title="Empresas Que Ya Se Transformaron"
-        description="No hablamos de teoria. Estos son proyectos reales con resultados medibles"
+        description="No hablamos de teoría. Estos son proyectos reales con resultados medibles"
       />
     </ScrollReveal>
 
@@ -130,9 +130,9 @@ const otrosProyectos = (await getCollection('projects'))
               </div>
               <div class="p-6 lg:p-8 flex flex-col flex-1">
               <span class="text-xs text-text-secondary mb-2">{caso.client}</span>
-              <h3 class="text-lg font-bold text-text-primary mb-2 group-hover:text-accent-cyan transition-colors duration-300">
+              <p class="text-lg font-bold text-text-primary mb-2 group-hover:text-accent-cyan transition-colors duration-300">
                 {caso.headline}
-              </h3>
+              </p>
               <p class="text-sm text-text-secondary leading-relaxed mb-5 flex-1">{caso.description}</p>
               <!-- Metrics -->
               <div class="space-y-2 mb-5">
@@ -160,7 +160,7 @@ const otrosProyectos = (await getCollection('projects'))
     {otrosProyectos.length > 0 && (
       <div class="mt-12">
         <ScrollReveal>
-          <h3 class="text-xl font-bold text-text-primary text-center mb-8">Mas proyectos entregados</h3>
+          <p class="text-xl font-bold text-text-primary text-center mb-8">Más proyectos entregados</p>
         </ScrollReveal>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {otrosProyectos.map((project, i) => (
@@ -175,9 +175,9 @@ const otrosProyectos = (await getCollection('projects'))
                       {new Intl.DateTimeFormat('es-CO', { year: 'numeric', month: 'short' }).format(project.data.date)}
                     </span>
                   </div>
-                  <h4 class="text-lg font-semibold text-text-primary group-hover:text-accent-cyan transition-colors duration-300 mb-2">
+                  <p class="text-lg font-semibold text-text-primary group-hover:text-accent-cyan transition-colors duration-300 mb-2">
                     {project.data.title}
-                  </h4>
+                  </p>
                   <p class="text-sm text-text-secondary leading-relaxed flex-1">{project.data.description}</p>
                   <div class="mt-4 flex items-center gap-2 text-sm font-medium text-accent-cyan group-hover:gap-3 transition-all duration-300">
                     Ver proyecto

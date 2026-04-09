@@ -4,9 +4,9 @@ export const casosExito = [
     title: 'Axabot',
     client: 'AXA Colpatria',
     category: 'Chatbot IA',
-    headline: 'Atencion 24/7 sin aumentar nomina',
+    headline: 'Atención 24/7 sin aumentar nómina',
     description:
-      'Chatbot con IA conversacional que atiende consultas de seguridad laboral para una de las aseguradoras mas grandes de Colombia. Voz, texto e imagenes.',
+      'Chatbot con IA conversacional que atiende consultas de seguridad laboral para una de las aseguradoras más grandes de Latinoamérica. Voz, texto e imágenes.',
     metrics: [
       { label: 'Consultas automatizadas', value: '4,100+' },
       { label: 'Disponibilidad', value: '24/7' },
@@ -20,7 +20,7 @@ export const casosExito = [
     category: 'E-commerce Conversacional',
     headline: 'WhatsApp convertido en canal de ventas',
     description:
-      'Plataforma que permite a negocios vender, cobrar y gestionar pedidos directamente desde WhatsApp con catalogos, pagos y reservas integradas.',
+      'Plataforma que permite a negocios vender, cobrar y gestionar pedidos directamente desde WhatsApp con catálogos, pagos y reservas integradas.',
     metrics: [
       { label: 'Modelo', value: 'Multi-tenant' },
       { label: 'Pagos', value: 'Wompi + Wallet' },
@@ -31,12 +31,12 @@ export const casosExito = [
     slug: 'labriego',
     title: 'Labriego',
     client: 'Sector agropecuario',
-    category: 'SaaS Agricola',
-    headline: 'Gestion agricola digitalizada de punta a punta',
+    category: 'SaaS Agrícola',
+    headline: 'Gestión agrícola digitalizada de punta a punta',
     description:
-      'SaaS completo que digitaliza cultivos, costos, inventarios, nomina y reportes financieros para fincas y empresas agropecuarias.',
+      'SaaS completo que digitaliza cultivos, costos, inventarios, nómina y reportes financieros para fincas y empresas agropecuarias.',
     metrics: [
-      { label: 'Modulos', value: '10+' },
+      { label: 'Módulos', value: '10+' },
       { label: 'Plataformas', value: 'Web + iOS + Android' },
       { label: 'Modelo', value: 'SaaS' },
     ],
@@ -48,11 +48,11 @@ export const casosExito = [
     category: 'Plataforma ISP',
     headline: 'ISP gestionado desde una sola plataforma',
     description:
-      'Sistema integral para proveedores de internet: facturacion electronica, control de red MikroTik/Huawei y app movil para clientes.',
+      'Sistema integral para proveedores de internet: facturación electrónica, control de red MikroTik/Huawei y app móvil para clientes.',
     metrics: [
       { label: 'Integraciones', value: 'MikroTik + Huawei' },
-      { label: 'Facturacion', value: 'Electronica (Siigo)' },
-      { label: 'App movil', value: 'iOS + Android' },
+      { label: 'Facturación', value: 'Electrónica (Siigo)' },
+      { label: 'App móvil', value: 'iOS + Android' },
     ],
   },
 ];

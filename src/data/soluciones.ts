@@ -1,8 +1,8 @@
 export const soluciones = [
   {
     id: 'automatiza',
-    title: 'Automatiza tu operacion',
-    tagline: 'Menos trabajo manual, mas resultados',
+    title: 'Automatiza tu operación',
+    tagline: 'Menos trabajo manual, más resultados',
     description:
       'Reemplaza tareas repetitivas con sistemas inteligentes que trabajan por ti las 24 horas. Chatbots que atienden, sensores que monitorean e IA que decide.',
     servicios: ['Inteligencia Artificial', 'Chatbots', 'IoT', 'Inventarios'],
@@ -11,32 +11,32 @@ export const soluciones = [
   },
   {
     id: 'vende-mas',
-    title: 'Vende mas con tecnologia',
+    title: 'Vende más con tecnología',
     tagline: 'Tu negocio abierto al mundo digital',
     description:
-      'Plataformas web, apps moviles y pagos en linea que convierten visitantes en clientes. Tu negocio vendiendo 24/7 desde cualquier dispositivo.',
-    servicios: ['Desarrollo Web', 'Desarrollo Movil', 'Pagos en Linea', 'Transmision'],
+      'Plataformas web, apps móviles y pagos en línea que convierten visitantes en clientes. Tu negocio vendiendo 24/7 desde cualquier dispositivo.',
+    servicios: ['Desarrollo Web', 'Desarrollo Móvil', 'Pagos en Línea', 'Transmisión'],
     icon: 'M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z',
-    whatsappMsg: 'Hola, quiero una plataforma web o app para vender mas',
+    whatsappMsg: 'Hola, quiero una plataforma web o app para vender más',
   },
   {
     id: 'decisiones',
     title: 'Toma decisiones con datos',
-    tagline: 'De la intuicion a la certeza',
+    tagline: 'De la intuición a la certeza',
     description:
-      'Modelos predictivos, auditorias y dashboards que transforman tus datos en estrategia. Deja de adivinar y empieza a decidir con informacion real.',
-    servicios: ['IA Predictiva', 'Auditorias', 'Asesorias', 'Speech to Text'],
+      'Modelos predictivos, auditorías y dashboards que transforman tus datos en estrategia. Deja de adivinar y empieza a decidir con información real.',
+    servicios: ['IA Predictiva', 'Auditorías', 'Asesorías', 'Speech to Text'],
     icon: 'M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5',
     whatsappMsg: 'Hola, necesito analizar datos y tomar mejores decisiones en mi empresa',
   },
   {
     id: 'innova',
-    title: 'Innova y diferenciate',
-    tagline: 'Tecnologia que nadie mas tiene',
+    title: 'Innova y diferénciate',
+    tagline: 'Tecnología que nadie más tiene',
     description:
-      'Blockchain, videojuegos, streaming y soluciones de vanguardia que posicionan tu marca como lider. Diferénciate con tecnologia que tu competencia no tiene.',
+      'Blockchain, videojuegos, streaming y soluciones de vanguardia que posicionan tu marca como líder. Diferénciate con tecnología que tu competencia no tiene.',
     servicios: ['Blockchain', 'Videojuegos', 'Streaming', 'Mantenimiento'],
     icon: 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z',
-    whatsappMsg: 'Hola, me interesa innovar con tecnologia en mi empresa',
+    whatsappMsg: 'Hola, me interesa innovar con tecnología en mi empresa',
   },
 ];
