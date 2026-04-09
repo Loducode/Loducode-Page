@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import BlogCard from '../../../components/BlogCard.astro';
+import SectionHeading from '../../../components/SectionHeading.astro';
+import ScrollReveal from '../../../components/ScrollReveal.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const t = useTranslations('en');
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+<Layout title={t('blog.pageTitle')} description={t('blog.pageDescription')}>
+  <section class="pt-28 pb-20 lg:pt-36 lg:pb-28">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ScrollReveal>
+        <SectionHeading
+          subtitle={t('blog.subtitle')}
+          title={t('blog.heading')}
+          description={t('blog.headingDesc')}
+        />
+      </ScrollReveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.map((post, i) => (
+          <BlogCard
+            title={post.data.title}
+            date={post.data.date}
+            author={post.data.author}
+            image={post.data.image}
+            excerpt={post.data.excerpt}
+            category={post.data.category}
+            slug={post.id}
+            delay={`${i * 100}ms`}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

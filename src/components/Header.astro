@@ -2,14 +2,19 @@
 import SocialLinks from './SocialLinks.astro';
 import MenuIcon from './icons/Menu.astro';
 import CloseIcon from './icons/Close.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getLangFromUrl, useTranslations, getLocalePath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const navLinks = [
-  { href: '/#inicio', label: 'Inicio' },
-  { href: '/#problemas', label: 'Retos' },
-  { href: '/#soluciones', label: 'Soluciones' },
-  { href: '/#casos', label: 'Casos de Exito' },
-  { href: '/#proceso', label: 'Proceso' },
-  { href: '/#contacto', label: 'Contacto' },
+  { href: getLocalePath('/#inicio', lang), label: t('nav.inicio') },
+  { href: getLocalePath('/#problemas', lang), label: t('nav.retos') },
+  { href: getLocalePath('/#soluciones', lang), label: t('nav.soluciones') },
+  { href: getLocalePath('/#casos', lang), label: t('nav.casos') },
+  { href: getLocalePath('/#proceso', lang), label: t('nav.proceso') },
+  { href: getLocalePath('/#contacto', lang), label: t('nav.contacto') },
 ];
 ---
 <header
@@ -19,7 +24,7 @@ const navLinks = [
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
       <!-- Logo -->
-      <a href="/" class="flex-shrink-0">
+      <a href={getLocalePath('/', lang)} class="flex-shrink-0">
         <img src="/images/logo-white.png" alt="Loducode S.A.S." class="h-8 lg:h-10 w-auto" />
       </a>
 
@@ -35,8 +40,9 @@ const navLinks = [
         ))}
       </nav>
 
-      <!-- Desktop Social -->
-      <div class="hidden lg:block">
+      <!-- Desktop Social + Language -->
+      <div class="hidden lg:flex items-center gap-4">
+        <LanguageSwitcher />
         <SocialLinks iconClass="w-4 h-4" />
       </div>
 
@@ -44,7 +50,7 @@ const navLinks = [
       <button
         id="mobile-menu-btn"
         class="lg:hidden text-text-primary p-2"
-        aria-label="Abrir menú"
+        aria-label={t('header.openMenu')}
       >
         <MenuIcon class="w-6 h-6" />
       </button>
@@ -59,7 +65,7 @@ const navLinks = [
     <button
       id="mobile-menu-close"
       class="absolute top-5 right-5 text-text-primary p-2"
-      aria-label="Cerrar menú"
+      aria-label={t('header.closeMenu')}
     >
       <CloseIcon class="w-7 h-7" />
     </button>
@@ -71,6 +77,9 @@ const navLinks = [
         {label}
       </a>
     ))}
+    <div class="mt-2">
+      <LanguageSwitcher />
+    </div>
     <div class="mt-4">
       <SocialLinks iconClass="w-5 h-5" />
     </div>

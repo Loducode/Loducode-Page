@@ -1,4 +1,6 @@
 ---
+import { getLangFromUrl, useTranslations, getLocalePath } from '../i18n/utils';
+
 interface Props {
   title: string;
   date: Date;
@@ -12,19 +14,23 @@ interface Props {
 
 const { title, date, author, image, excerpt, category, slug, delay = '0ms' } = Astro.props;
 
-const formattedDate = new Intl.DateTimeFormat('es-CO', {
+const lang = getLangFromUrl(Astro.url);
+const dateLocale = lang === 'en' ? 'en-US' : 'es-CO';
+const readMore = lang === 'en' ? 'Read more' : 'Leer más';
+
+const formattedDate = new Intl.DateTimeFormat(dateLocale, {
   year: 'numeric',
   month: 'short',
   day: 'numeric',
 }).format(date);
 ---
 <div class="scroll-reveal" style={`transition-delay: ${delay}`}>
-  <a href={`/blog/${slug}/`} class="group block h-full">
+  <a href={getLocalePath(`/blog/${slug}/`, lang)} class="group block h-full">
     <div class="glass glass-hover h-full overflow-hidden flex flex-col">
       <!-- Dynamic blog illustration -->
       <div class="relative h-48 bg-gradient-to-br from-accent-cyan/5 to-accent-purple/5 overflow-hidden group-hover:from-accent-cyan/10 group-hover:to-accent-purple/10 transition-all duration-500">
         <div class="absolute inset-0 flex items-center justify-center p-6">
-          {category.toLowerCase().includes('ia') || category.toLowerCase().includes('inteligencia') ? (
+          {category.toLowerCase().includes('ia') || category.toLowerCase().includes('inteligencia') || category.toLowerCase().includes('ai') ? (
             <!-- AI / Neural network illustration -->
             <div class="relative group-hover:scale-105 transition-transform duration-500">
               <div class="flex items-center gap-4">
@@ -49,7 +55,7 @@ const formattedDate = new Intl.DateTimeFormat('es-CO', {
                 <div class="w-6 h-6 rounded-full bg-green-500/40 shadow-[0_0_12px_rgba(34,197,94,0.4)]"></div>
               </div>
             </div>
-          ) : category.toLowerCase().includes('móvil') || category.toLowerCase().includes('movil') ? (
+          ) : category.toLowerCase().includes('móvil') || category.toLowerCase().includes('movil') || category.toLowerCase().includes('mobile') ? (
             <!-- Mobile illustration -->
             <div class="w-20 h-36 rounded-2xl border border-border-glass/40 bg-bg-primary/60 p-1.5 group-hover:scale-105 transition-transform duration-500">
               <div class="w-6 h-2 mx-auto rounded-full bg-bg-primary border border-border-glass/30 mb-1"></div>
@@ -92,7 +98,7 @@ const formattedDate = new Intl.DateTimeFormat('es-CO', {
         </h3>
         <p class="text-sm text-text-secondary leading-relaxed flex-1">{excerpt}</p>
         <div class="mt-4 flex items-center gap-2 text-sm font-medium text-accent-cyan group-hover:gap-3 transition-all duration-300">
-          Leer más
+          {readMore}
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
         </div>
       </div>

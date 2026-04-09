@@ -1,13 +1,17 @@
 ---
 import SocialLinks from './SocialLinks.astro';
+import { getLangFromUrl, useTranslations, getLocalePath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const navLinks = [
-  { href: '/', label: 'Inicio' },
-  { href: '/#problemas', label: 'Retos' },
-  { href: '/#soluciones', label: 'Soluciones' },
-  { href: '/#casos', label: 'Casos de Exito' },
-  { href: '/#proceso', label: 'Proceso' },
-  { href: '/#contacto', label: 'Contacto' },
+  { href: getLocalePath('/', lang), label: t('nav.inicio') },
+  { href: getLocalePath('/#problemas', lang), label: t('nav.retos') },
+  { href: getLocalePath('/#soluciones', lang), label: t('nav.soluciones') },
+  { href: getLocalePath('/#casos', lang), label: t('nav.casos') },
+  { href: getLocalePath('/#proceso', lang), label: t('nav.proceso') },
+  { href: getLocalePath('/#contacto', lang), label: t('nav.contacto') },
 ];
 ---
 <footer class="border-t border-border-glass bg-bg-primary">
@@ -17,14 +21,13 @@ const navLinks = [
       <div>
         <img src="/images/logo-white.png" alt="Loducode S.A.S." class="h-10 w-auto" />
         <p class="mt-4 text-text-secondary text-sm leading-relaxed">
-          Software a la medida, Inteligencia Artificial y Blockchain para empresas que
-          quieren escalar. Transformamos ideas en productos digitales que generan resultados.
+          {t('footer.description')}
         </p>
       </div>
 
       <!-- Navigation -->
       <div>
-        <p class="text-sm font-semibold text-text-primary uppercase tracking-wider mb-4">Navegación</p>
+        <p class="text-sm font-semibold text-text-primary uppercase tracking-wider mb-4">{t('footer.navigation')}</p>
         <ul class="space-y-2">
           {navLinks.map(({ href, label }) => (
             <li>
@@ -34,20 +37,20 @@ const navLinks = [
             </li>
           ))}
         </ul>
-        <p class="text-sm font-semibold text-text-primary uppercase tracking-wider mb-4 mt-6">Recursos</p>
+        <p class="text-sm font-semibold text-text-primary uppercase tracking-wider mb-4 mt-6">{t('footer.resources')}</p>
         <ul class="space-y-2">
           <li>
-            <a href="/blog/" class="text-sm text-text-secondary hover:text-accent-cyan transition-colors duration-300">Blog</a>
+            <a href={getLocalePath('/blog/', lang)} class="text-sm text-text-secondary hover:text-accent-cyan transition-colors duration-300">Blog</a>
           </li>
           <li>
-            <a href="/projects/" class="text-sm text-text-secondary hover:text-accent-cyan transition-colors duration-300">Portafolio</a>
+            <a href={getLocalePath('/projects/', lang)} class="text-sm text-text-secondary hover:text-accent-cyan transition-colors duration-300">{t('footer.portfolio')}</a>
           </li>
         </ul>
       </div>
 
       <!-- Contact -->
       <div>
-        <p class="text-sm font-semibold text-text-primary uppercase tracking-wider mb-4">Contacto</p>
+        <p class="text-sm font-semibold text-text-primary uppercase tracking-wider mb-4">{t('footer.contact')}</p>
         <ul class="space-y-3 text-sm text-text-secondary">
           <li class="flex items-start gap-2">
             <svg class="w-4 h-4 mt-0.5 text-accent-cyan flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
@@ -72,7 +75,7 @@ const navLinks = [
   <!-- Bottom bar -->
   <div class="border-t border-border-glass">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-text-secondary">
-      <span>&copy; {new Date().getFullYear()} Loducode S.A.S. Todos los derechos reservados.</span>
+      <span>&copy; {new Date().getFullYear()} Loducode S.A.S. {t('footer.copyright')}</span>
       <span>Villavicencio, Meta - Colombia</span>
     </div>
   </div>

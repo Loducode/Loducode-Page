@@ -2,6 +2,10 @@
 import ScrollReveal from './ScrollReveal.astro';
 import WhatsAppIcon from './icons/WhatsApp.astro';
 import { socialLinks } from '../data/social-links';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 <section id="contacto" class="py-20 lg:py-28 relative overflow-hidden">
   <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border-glass to-transparent"></div>
@@ -19,12 +23,12 @@ import { socialLinks } from '../data/social-links';
       <div class="lg:col-span-3 text-center lg:text-left">
         <ScrollReveal>
           <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-            ¿Listo para
-            <span class="gradient-text"> transformar </span>
-            tu negocio?
+            {t('cta.title.pre')}
+            <span class="gradient-text">{t('cta.title.highlight')}</span>
+            {t('cta.title.post')}
           </h2>
           <p class="text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed">
-            Cuéntanos tu reto. En menos de 24 horas tendrás una respuesta con ideas concretas para resolverlo. Sin compromiso, sin letra pequeña.
+            {t('cta.description')}
           </p>
         </ScrollReveal>
 
@@ -38,10 +42,10 @@ import { socialLinks } from '../data/social-links';
               class="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-[#25d366] text-white font-bold text-lg shadow-lg shadow-[#25d366]/30 hover:shadow-[#25d366]/50 hover:scale-105 transition-all duration-300"
             >
               <WhatsAppIcon class="w-6 h-6" />
-              Hablemos por WhatsApp
+              {t('cta.whatsapp')}
             </a>
             <a href="mailto:info@loducode.com" class="text-text-secondary hover:text-accent-cyan transition-colors text-sm">
-              o escribenos a <span class="font-medium text-accent-cyan">info@loducode.com</span>
+              {t('cta.email')} <span class="font-medium text-accent-cyan">info@loducode.com</span>
             </a>
           </div>
         </ScrollReveal>
@@ -60,7 +64,7 @@ import { socialLinks } from '../data/social-links';
                 </div>
                 <div>
                   <div class="text-sm font-semibold text-text-primary">Loducode</div>
-                  <div class="text-[10px] text-green-400">En linea</div>
+                  <div class="text-[10px] text-green-400">{t('cta.chat.online')}</div>
                 </div>
               </div>
               <!-- Messages -->
@@ -103,7 +107,7 @@ import { socialLinks } from '../data/social-links';
               <!-- Input -->
               <div class="flex items-center gap-2 px-4 py-3 border-t border-border-glass/30">
                 <div class="flex-1 h-8 rounded-full bg-white/[0.04] flex items-center px-3">
-                  <span class="text-[10px] text-text-secondary/30">Escribe tu mensaje...</span>
+                  <span class="text-[10px] text-text-secondary/30">{t('cta.chat.placeholder')}</span>
                 </div>
                 <div class="w-8 h-8 rounded-full bg-[#25d366]/30 flex items-center justify-center">
                   <svg class="w-4 h-4 text-[#25d366]" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
@@ -122,15 +126,15 @@ import { socialLinks } from '../data/social-links';
       <div class="mt-12 grid grid-cols-3 gap-6 max-w-lg mx-auto">
         <div class="text-center">
           <div class="text-2xl sm:text-3xl font-bold gradient-text">+50</div>
-          <div class="text-xs text-text-secondary mt-1">Proyectos entregados</div>
+          <div class="text-xs text-text-secondary mt-1">{t('cta.stats.projects')}</div>
         </div>
         <div class="text-center">
           <div class="text-2xl sm:text-3xl font-bold gradient-text">+5</div>
-          <div class="text-xs text-text-secondary mt-1">Años de experiencia</div>
+          <div class="text-xs text-text-secondary mt-1">{t('cta.stats.years')}</div>
         </div>
         <div class="text-center">
           <div class="text-2xl sm:text-3xl font-bold gradient-text">+30</div>
-          <div class="text-xs text-text-secondary mt-1">Clientes satisfechos</div>
+          <div class="text-xs text-text-secondary mt-1">{t('cta.stats.clients')}</div>
         </div>
       </div>
     </ScrollReveal>
