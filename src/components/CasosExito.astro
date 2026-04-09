@@ -29,14 +29,51 @@ const otrosProyectos = (await getCollection('projects'))
       <a href={`/projects/${destacado.slug}/`} class="group block mb-8">
         <div class="glass glass-hover overflow-hidden">
           <div class="grid grid-cols-1 lg:grid-cols-2">
-            <!-- Image placeholder -->
-            <div class="relative h-64 lg:h-auto bg-gradient-to-br from-accent-cyan/10 to-accent-purple/10 flex items-center justify-center">
-              <div class="text-center">
-                <div class="text-6xl font-extrabold gradient-text mb-2">{destacado.title}</div>
-                <span class="px-3 py-1 text-xs font-semibold rounded-full bg-accent-cyan/20 text-accent-cyan">
-                  {destacado.category}
-                </span>
+            <!-- Visual mockup -->
+            <div class="relative h-64 lg:h-auto bg-gradient-to-br from-accent-cyan/5 to-accent-purple/5 flex items-center justify-center p-8 overflow-hidden">
+              <!-- Abstract app mockup -->
+              <div class="relative w-full max-w-xs">
+                <!-- Browser frame -->
+                <div class="rounded-xl border border-border-glass/40 bg-bg-primary/60 backdrop-blur overflow-hidden shadow-2xl shadow-accent-cyan/10 group-hover:shadow-accent-cyan/20 transition-shadow duration-500">
+                  <div class="flex items-center gap-1.5 px-3 py-2 bg-white/[0.03] border-b border-border-glass/30">
+                    <div class="w-2 h-2 rounded-full bg-red-400/50"></div>
+                    <div class="w-2 h-2 rounded-full bg-yellow-400/50"></div>
+                    <div class="w-2 h-2 rounded-full bg-green-400/50"></div>
+                    <div class="flex-1 mx-3 h-4 rounded-full bg-white/[0.04] flex items-center px-2">
+                      <span class="text-[8px] text-text-secondary/30">{destacado.title.toLowerCase()}.app</span>
+                    </div>
+                  </div>
+                  <div class="p-4 space-y-2.5">
+                    <div class="grid grid-cols-3 gap-2">
+                      <div class="rounded-lg bg-accent-cyan/10 p-2"><div class="h-2 w-8 rounded bg-accent-cyan/40 mb-1"></div><div class="h-3 w-10 rounded bg-accent-cyan/50"></div></div>
+                      <div class="rounded-lg bg-accent-purple/10 p-2"><div class="h-2 w-6 rounded bg-accent-purple/40 mb-1"></div><div class="h-3 w-12 rounded bg-accent-purple/50"></div></div>
+                      <div class="rounded-lg bg-green-500/10 p-2"><div class="h-2 w-8 rounded bg-green-500/40 mb-1"></div><div class="h-3 w-8 rounded bg-green-500/50"></div></div>
+                    </div>
+                    <div class="rounded-lg bg-white/[0.03] p-3">
+                      <div class="flex items-end gap-1 h-12">
+                        <div class="flex-1 bg-accent-cyan/20 rounded-t" style="height:40%"></div>
+                        <div class="flex-1 bg-accent-cyan/30 rounded-t" style="height:65%"></div>
+                        <div class="flex-1 bg-accent-cyan/25 rounded-t" style="height:50%"></div>
+                        <div class="flex-1 bg-accent-cyan/40 rounded-t" style="height:85%"></div>
+                        <div class="flex-1 bg-accent-cyan/35 rounded-t" style="height:70%"></div>
+                        <div class="flex-1 bg-accent-cyan/50 rounded-t" style="height:95%"></div>
+                      </div>
+                    </div>
+                    <div class="space-y-1.5">
+                      <div class="flex gap-2 items-center"><div class="w-5 h-5 rounded-full bg-accent-purple/15"></div><div class="h-1.5 flex-1 rounded bg-white/[0.05]"></div><div class="h-1.5 w-10 rounded bg-green-500/25"></div></div>
+                      <div class="flex gap-2 items-center"><div class="w-5 h-5 rounded-full bg-accent-cyan/15"></div><div class="h-1.5 flex-1 rounded bg-white/[0.05]"></div><div class="h-1.5 w-8 rounded bg-accent-cyan/25"></div></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Category badge -->
+                <div class="absolute -bottom-2 left-1/2 -translate-x-1/2">
+                  <span class="px-4 py-1.5 text-xs font-semibold rounded-full bg-accent-cyan/20 text-accent-cyan backdrop-blur-sm border border-accent-cyan/20">
+                    {destacado.category}
+                  </span>
+                </div>
               </div>
+              <!-- Decorative glow -->
+              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-accent-cyan/10 blur-3xl"></div>
             </div>
             <!-- Content -->
             <div class="p-8 lg:p-10 flex flex-col justify-center">
@@ -71,10 +108,27 @@ const otrosProyectos = (await getCollection('projects'))
       {resto.map((caso, i) => (
         <ScrollReveal delay={`${(i + 2) * 100}ms`}>
           <a href={`/projects/${caso.slug}/`} class="group block h-full">
-            <div class="glass glass-hover p-6 lg:p-8 h-full flex flex-col">
-              <span class="inline-block w-fit px-3 py-1 text-xs font-semibold rounded-full bg-accent-purple/20 text-accent-purple mb-4">
-                {caso.category}
-              </span>
+            <div class="glass glass-hover h-full flex flex-col overflow-hidden">
+              <!-- Mini mockup header -->
+              <div class="h-32 bg-gradient-to-br from-accent-cyan/5 to-accent-purple/5 p-4 flex items-center justify-center relative">
+                <div class="w-full max-w-[180px] rounded-lg border border-border-glass/30 bg-bg-primary/50 p-2 space-y-1.5">
+                  <div class="flex gap-1"><div class="w-1.5 h-1.5 rounded-full bg-red-400/40"></div><div class="w-1.5 h-1.5 rounded-full bg-yellow-400/40"></div><div class="w-1.5 h-1.5 rounded-full bg-green-400/40"></div></div>
+                  <div class="grid grid-cols-4 gap-1">
+                    <div class="h-4 rounded bg-accent-cyan/15 col-span-1"></div>
+                    <div class="h-4 rounded bg-white/[0.03] col-span-3"></div>
+                  </div>
+                  <div class="flex gap-1 h-6">
+                    <div class="flex-1 rounded bg-accent-cyan/10"></div>
+                    <div class="flex-1 rounded bg-accent-purple/10"></div>
+                  </div>
+                </div>
+                <div class="absolute top-3 right-3">
+                  <span class="px-2 py-0.5 text-[10px] font-semibold rounded-full bg-accent-purple/20 text-accent-purple">
+                    {caso.category}
+                  </span>
+                </div>
+              </div>
+              <div class="p-6 lg:p-8 flex flex-col flex-1">
               <span class="text-xs text-text-secondary mb-2">{caso.client}</span>
               <h3 class="text-lg font-bold text-text-primary mb-2 group-hover:text-accent-cyan transition-colors duration-300">
                 {caso.headline}
@@ -94,6 +148,7 @@ const otrosProyectos = (await getCollection('projects'))
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
+              </div>
               </div>
             </div>
           </a>

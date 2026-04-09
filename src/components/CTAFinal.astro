@@ -13,38 +13,109 @@ import { socialLinks } from '../data/social-links';
     <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-accent-purple/5 blur-3xl"></div>
   </div>
 
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <ScrollReveal>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-        Listo para
-        <span class="gradient-text"> transformar </span>
-        tu negocio?
-      </h2>
-      <p class="text-lg text-text-secondary max-w-2xl mx-auto mb-10 leading-relaxed">
-        Cuentanos tu reto. En menos de 24 horas tendras una respuesta con ideas concretas para resolverlo. Sin compromiso, sin letra pequena.
-      </p>
-    </ScrollReveal>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+      <!-- Left: CTA content -->
+      <div class="lg:col-span-3 text-center lg:text-left">
+        <ScrollReveal>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+            Listo para
+            <span class="gradient-text"> transformar </span>
+            tu negocio?
+          </h2>
+          <p class="text-lg text-text-secondary max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed">
+            Cuentanos tu reto. En menos de 24 horas tendras una respuesta con ideas concretas para resolverlo. Sin compromiso, sin letra pequena.
+          </p>
+        </ScrollReveal>
 
-    <!-- Main CTA -->
-    <ScrollReveal delay="100ms">
-      <a
-        href={socialLinks.whatsapp}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-[#25d366] text-white font-bold text-lg shadow-lg shadow-[#25d366]/30 hover:shadow-[#25d366]/50 hover:scale-105 transition-all duration-300"
-      >
-        <WhatsAppIcon class="w-6 h-6" />
-        Hablemos ahora por WhatsApp
-      </a>
-    </ScrollReveal>
+        <!-- Main CTA -->
+        <ScrollReveal delay="100ms">
+          <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+            <a
+              href={socialLinks.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-[#25d366] text-white font-bold text-lg shadow-lg shadow-[#25d366]/30 hover:shadow-[#25d366]/50 hover:scale-105 transition-all duration-300"
+            >
+              <WhatsAppIcon class="w-6 h-6" />
+              Hablemos por WhatsApp
+            </a>
+            <a href="mailto:info@loducode.com" class="text-text-secondary hover:text-accent-cyan transition-colors text-sm">
+              o escribenos a <span class="font-medium text-accent-cyan">info@loducode.com</span>
+            </a>
+          </div>
+        </ScrollReveal>
+      </div>
 
-    <!-- Secondary CTA -->
-    <ScrollReveal delay="200ms">
-      <p class="mt-6 text-text-secondary">
-        O escribenos a
-        <a href="mailto:info@loducode.com" class="text-accent-cyan hover:underline font-medium">info@loducode.com</a>
-      </p>
-    </ScrollReveal>
+      <!-- Right: Chat illustration -->
+      <div class="lg:col-span-2 hidden lg:block">
+        <ScrollReveal delay="200ms">
+          <div class="relative max-w-xs ml-auto" style="animation: float 6s ease-in-out infinite;">
+            <!-- Chat window mockup -->
+            <div class="glass rounded-2xl overflow-hidden shadow-2xl shadow-accent-cyan/10 border border-border-glass/50">
+              <!-- Chat header -->
+              <div class="flex items-center gap-3 px-4 py-3 bg-[#25d366]/10 border-b border-border-glass/30">
+                <div class="w-8 h-8 rounded-full bg-[#25d366]/30 flex items-center justify-center">
+                  <WhatsAppIcon class="w-4 h-4 text-[#25d366]" />
+                </div>
+                <div>
+                  <div class="text-sm font-semibold text-text-primary">Loducode</div>
+                  <div class="text-[10px] text-green-400">En linea</div>
+                </div>
+              </div>
+              <!-- Messages -->
+              <div class="p-4 space-y-3 bg-bg-primary/30">
+                <!-- User message -->
+                <div class="flex justify-end">
+                  <div class="bg-accent-cyan/15 rounded-2xl rounded-br-sm px-4 py-2.5 max-w-[85%]">
+                    <div class="h-2 w-32 rounded bg-white/15 mb-1.5"></div>
+                    <div class="h-2 w-20 rounded bg-white/10"></div>
+                    <div class="text-[9px] text-text-secondary/40 text-right mt-1">10:30 AM</div>
+                  </div>
+                </div>
+                <!-- Bot response -->
+                <div class="flex justify-start">
+                  <div class="bg-white/[0.05] rounded-2xl rounded-bl-sm px-4 py-2.5 max-w-[85%]">
+                    <div class="h-2 w-36 rounded bg-white/10 mb-1.5"></div>
+                    <div class="h-2 w-28 rounded bg-white/8 mb-1.5"></div>
+                    <div class="h-2 w-16 rounded bg-[#25d366]/20"></div>
+                    <div class="text-[9px] text-text-secondary/40 mt-1">10:31 AM</div>
+                  </div>
+                </div>
+                <!-- User message -->
+                <div class="flex justify-end">
+                  <div class="bg-accent-cyan/15 rounded-2xl rounded-br-sm px-4 py-2.5 max-w-[85%]">
+                    <div class="h-2 w-24 rounded bg-white/15"></div>
+                    <div class="text-[9px] text-text-secondary/40 text-right mt-1">10:32 AM</div>
+                  </div>
+                </div>
+                <!-- Typing indicator -->
+                <div class="flex justify-start">
+                  <div class="bg-white/[0.05] rounded-2xl rounded-bl-sm px-4 py-3">
+                    <div class="flex gap-1">
+                      <div class="w-2 h-2 rounded-full bg-text-secondary/30 animate-bounce" style="animation-delay: 0ms"></div>
+                      <div class="w-2 h-2 rounded-full bg-text-secondary/30 animate-bounce" style="animation-delay: 150ms"></div>
+                      <div class="w-2 h-2 rounded-full bg-text-secondary/30 animate-bounce" style="animation-delay: 300ms"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Input -->
+              <div class="flex items-center gap-2 px-4 py-3 border-t border-border-glass/30">
+                <div class="flex-1 h-8 rounded-full bg-white/[0.04] flex items-center px-3">
+                  <span class="text-[10px] text-text-secondary/30">Escribe tu mensaje...</span>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-[#25d366]/30 flex items-center justify-center">
+                  <svg class="w-4 h-4 text-[#25d366]" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                </div>
+              </div>
+            </div>
+            <!-- Glow -->
+            <div class="absolute -inset-4 rounded-3xl bg-[#25d366]/5 blur-2xl -z-10"></div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </div>
 
     <!-- Stats -->
     <ScrollReveal delay="300ms">
