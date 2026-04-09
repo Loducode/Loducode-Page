@@ -1,0 +1,50 @@
+---
+import ScrollReveal from './ScrollReveal.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const clients = [
+  { name: 'AXA Colpatria', sector: lang === 'en' ? 'Insurance' : 'Seguros' },
+  { name: 'Unillanos', sector: lang === 'en' ? 'Education' : 'Educación' },
+  { name: 'EAAV', sector: lang === 'en' ? 'Public Sector' : 'Sector público' },
+  { name: 'Santelellano', sector: lang === 'en' ? 'Telecommunications' : 'Telecomunicaciones' },
+  { name: 'Labriego', sector: lang === 'en' ? 'Agriculture' : 'Agropecuario' },
+  { name: 'Domi', sector: 'E-commerce' },
+  { name: 'TipsCo', sector: 'Marketplace' },
+  { name: 'BiciClick', sector: lang === 'en' ? 'Urban Mobility' : 'Movilidad urbana' },
+];
+---
+<section class="py-16 lg:py-20 relative overflow-hidden">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border-glass to-transparent"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <ScrollReveal>
+      <div class="text-center mb-10">
+        <span class="inline-block text-sm font-semibold uppercase tracking-widest text-accent-cyan mb-3">
+          {t('clients.subtitle')}
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold gradient-text">
+          {t('clients.title')}
+        </h2>
+      </div>
+    </ScrollReveal>
+
+    <!-- Client logos grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+      {clients.map((client, i) => (
+        <ScrollReveal delay={`${i * 80}ms`}>
+          <div class="glass glass-hover p-5 flex flex-col items-center justify-center text-center gap-2 h-full group">
+            <!-- Stylized logo initial -->
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-cyan/10 to-accent-purple/10 border border-border-glass flex items-center justify-center group-hover:from-accent-cyan/20 group-hover:to-accent-purple/20 transition-all duration-300">
+              <span class="text-lg font-bold gradient-text">{client.name.charAt(0)}</span>
+            </div>
+            <span class="text-sm font-semibold text-text-primary group-hover:text-accent-cyan transition-colors duration-300">{client.name}</span>
+            <span class="text-[11px] text-text-secondary">{client.sector}</span>
+          </div>
+        </ScrollReveal>
+      ))}
+    </div>
+  </div>
+</section>

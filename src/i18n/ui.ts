@@ -120,6 +120,33 @@ export const ui = {
     'breadcrumb.blog': 'Blog',
     'breadcrumb.projects': 'Proyectos',
 
+    // About
+    'about.subtitle': 'Por que elegirnos',
+    'about.title.pre': 'No solo escribimos codigo.',
+    'about.title.highlight': ' Construimos',
+    'about.title.post': ' la tecnologia que impulsa tu crecimiento.',
+    'about.description':
+      'Desde Villavicencio, Colombia, hemos ayudado a empresas del sector privado y publico a escalar sus operaciones con',
+    'about.description.post': 'y software a la medida. No entregamos proyectos: entregamos ventajas competitivas.',
+    'about.stats.projects': 'Proyectos entregados',
+    'about.stats.years': 'Anos de experiencia',
+    'about.stats.clients': 'Clientes satisfechos',
+    'about.cap.ai': 'Inteligencia Artificial',
+    'about.cap.blockchain': 'Blockchain & Web3',
+    'about.cap.web': 'Plataformas web',
+    'about.cap.mobile': 'Aplicaciones móviles',
+    'about.cap.info': 'Sistemas de Información',
+    'about.cap.management': 'Sistemas de Gestión',
+
+    // Clients
+    'clients.subtitle': 'Empresas que confian en nosotros',
+    'clients.title': 'Clientes y Proyectos Destacados',
+
+    // 404
+    '404.title': 'Pagina no encontrada',
+    '404.description': 'Lo sentimos, la pagina que buscas no existe o fue movida.',
+    '404.cta': 'Volver al inicio',
+
     // Meta
     'meta.title': 'Software a la Medida con IA para Empresas',
     'meta.description':
@@ -236,6 +263,33 @@ export const ui = {
     'breadcrumb.home': 'Home',
     'breadcrumb.blog': 'Blog',
     'breadcrumb.projects': 'Projects',
+
+    // About
+    'about.subtitle': 'Why choose us',
+    'about.title.pre': "We don't just write code.",
+    'about.title.highlight': ' We build',
+    'about.title.post': ' the technology that drives your growth.',
+    'about.description':
+      'From Villavicencio, Colombia, we have helped private and public sector companies scale their operations with',
+    'about.description.post': 'and custom software. We don\'t deliver projects: we deliver competitive advantages.',
+    'about.stats.projects': 'Projects delivered',
+    'about.stats.years': 'Years of experience',
+    'about.stats.clients': 'Satisfied clients',
+    'about.cap.ai': 'Artificial Intelligence',
+    'about.cap.blockchain': 'Blockchain & Web3',
+    'about.cap.web': 'Web Platforms',
+    'about.cap.mobile': 'Mobile Apps',
+    'about.cap.info': 'Information Systems',
+    'about.cap.management': 'Management Systems',
+
+    // Clients
+    'clients.subtitle': 'Companies that trust us',
+    'clients.title': 'Clients & Featured Projects',
+
+    // 404
+    '404.title': 'Page not found',
+    '404.description': "Sorry, the page you're looking for doesn't exist or has been moved.",
+    '404.cta': 'Back to home',
 
     // Meta
     'meta.title': 'Custom AI Software for Businesses',
