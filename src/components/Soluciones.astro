@@ -20,13 +20,30 @@ import { soluciones } from '../data/soluciones';
       {soluciones.map((sol, i) => (
         <ScrollReveal delay={`${i * 100}ms`}>
           <div id={sol.id} class="glass glass-hover p-8 lg:p-10 h-full flex flex-col group scroll-mt-24">
-            <!-- Icon -->
-            <div class="relative mb-6">
-              <div class="absolute inset-0 bg-gradient-to-r from-accent-cyan to-accent-purple rounded-xl blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-              <div class="relative w-16 h-16 flex items-center justify-center rounded-xl bg-gradient-to-br from-accent-cyan/10 to-accent-purple/10 border border-border-glass text-accent-cyan">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d={sol.icon} />
-                </svg>
+            <!-- Visual header: icon + mini illustration -->
+            <div class="flex items-start justify-between mb-6">
+              <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-accent-cyan to-accent-purple rounded-xl blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+                <div class="relative w-16 h-16 flex items-center justify-center rounded-xl bg-gradient-to-br from-accent-cyan/10 to-accent-purple/10 border border-border-glass text-accent-cyan">
+                  <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d={sol.icon} />
+                  </svg>
+                </div>
+              </div>
+              <!-- Mini visual accent -->
+              <div class="w-24 h-16 rounded-lg bg-gradient-to-br from-accent-cyan/5 to-accent-purple/5 border border-border-glass/30 overflow-hidden p-2 opacity-60 group-hover:opacity-100 transition-opacity">
+                <div class="flex gap-0.5 mb-1">
+                  <div class="h-1 w-1 rounded-full bg-accent-cyan/40"></div>
+                  <div class="h-1 w-1 rounded-full bg-accent-purple/40"></div>
+                  <div class="h-1 w-1 rounded-full bg-green-400/40"></div>
+                </div>
+                <div class="flex items-end gap-0.5 h-8">
+                  <div class="flex-1 bg-accent-cyan/20 rounded-t" style={`height: ${30 + i * 15}%`}></div>
+                  <div class="flex-1 bg-accent-cyan/30 rounded-t" style={`height: ${50 + i * 10}%`}></div>
+                  <div class="flex-1 bg-accent-purple/20 rounded-t" style={`height: ${40 + i * 12}%`}></div>
+                  <div class="flex-1 bg-accent-cyan/40 rounded-t" style={`height: ${70 - i * 8}%`}></div>
+                  <div class="flex-1 bg-accent-purple/30 rounded-t" style={`height: ${60 + i * 5}%`}></div>
+                </div>
               </div>
             </div>
 

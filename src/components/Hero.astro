@@ -1,5 +1,7 @@
 ---
 import { socialLinks } from '../data/social-links';
+import DashboardMockup from './illustrations/DashboardMockup.astro';
+import PhoneMockup from './illustrations/PhoneMockup.astro';
 ---
 <section id="inicio" class="relative min-h-screen flex items-center overflow-hidden">
   <!-- Animated gradient background -->
@@ -44,7 +46,9 @@ import { socialLinks } from '../data/social-links';
   <div class="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-cyan/20 to-transparent" style="animation: scale-pulse 4s ease-in-out infinite;"></div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 lg:pt-32">
-    <div class="max-w-4xl mx-auto text-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+    <!-- Left: Text content -->
+    <div class="text-center lg:text-left">
       <!-- Badge -->
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-sm text-text-secondary mb-8" style="animation: fade-in-down 0.6s ease-out both;">
         <span class="relative flex h-2 w-2">
@@ -80,7 +84,7 @@ import { socialLinks } from '../data/social-links';
 
       <!-- CTAs -->
       <div
-        class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+        class="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
         style="animation: fade-in-up 0.8s ease-out 0.6s both;"
       >
         <a
@@ -104,7 +108,7 @@ import { socialLinks } from '../data/social-links';
 
       <!-- Stats -->
       <div
-        class="mt-10 flex items-center justify-center gap-6 sm:gap-10"
+        class="mt-10 flex items-center justify-center lg:justify-start gap-6 sm:gap-10"
         style="animation: fade-in-up 0.8s ease-out 0.8s both;"
       >
         <div class="text-center">
@@ -123,15 +127,23 @@ import { socialLinks } from '../data/social-links';
         </div>
       </div>
 
-      <!-- Scroll indicator -->
-      <div class="mt-16 flex justify-center" style="animation: fade-in-up 1s ease-out 1s both;">
-        <a href="#problemas" class="flex flex-col items-center gap-2 text-text-secondary hover:text-accent-cyan transition-colors group">
-          <span class="text-xs uppercase tracking-widest">Descubrir</span>
-          <div class="w-6 h-10 rounded-full border-2 border-text-secondary/30 group-hover:border-accent-cyan/50 flex justify-center pt-2 transition-colors">
-            <div class="w-1 h-2.5 rounded-full bg-text-secondary group-hover:bg-accent-cyan animate-bounce transition-colors"></div>
-          </div>
-        </a>
-      </div>
+    </div>
+
+    <!-- Right: Mockup illustrations (desktop only) -->
+    <div class="hidden lg:block relative" style="animation: fade-in-up 1s ease-out 0.5s both;">
+      <DashboardMockup class="w-full max-w-md ml-auto" />
+      <PhoneMockup class="absolute -bottom-8 -left-8" />
+    </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="mt-16 flex justify-center" style="animation: fade-in-up 1s ease-out 1s both;">
+      <a href="#problemas" class="flex flex-col items-center gap-2 text-text-secondary hover:text-accent-cyan transition-colors group">
+        <span class="text-xs uppercase tracking-widest">Descubrir</span>
+        <div class="w-6 h-10 rounded-full border-2 border-text-secondary/30 group-hover:border-accent-cyan/50 flex justify-center pt-2 transition-colors">
+          <div class="w-1 h-2.5 rounded-full bg-text-secondary group-hover:bg-accent-cyan animate-bounce transition-colors"></div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
