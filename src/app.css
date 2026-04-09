@@ -30,6 +30,27 @@ body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Mobile touch targets: minimum 44px */
+@media (max-width: 768px) {
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Inline links inside text don't need min-height */
+  p a, li a, span a, div > a:not([class]) {
+    min-height: auto;
+    min-width: auto;
+  }
+
+  /* Ensure readable font sizes on mobile */
+  body {
+    font-size: 16px;
+  }
 }
 
 /* Animated gradient background */

@@ -30,7 +30,7 @@ const otrosProyectos = (await getCollection('projects'))
         <div class="glass glass-hover overflow-hidden">
           <div class="grid grid-cols-1 lg:grid-cols-2">
             <!-- Visual mockup -->
-            <div class="relative h-64 lg:h-auto bg-gradient-to-br from-accent-cyan/5 to-accent-purple/5 flex items-center justify-center p-8 overflow-hidden">
+            <div class="relative h-64 lg:h-auto bg-gradient-to-br from-accent-cyan/5 to-accent-purple/5 flex items-center justify-center p-8 overflow-hidden" aria-hidden="true">
               <!-- Abstract app mockup -->
               <div class="relative w-full max-w-xs">
                 <!-- Browser frame -->
@@ -110,7 +110,7 @@ const otrosProyectos = (await getCollection('projects'))
           <a href={`/projects/${caso.slug}/`} class="group block h-full">
             <div class="glass glass-hover h-full flex flex-col overflow-hidden">
               <!-- Mini mockup header -->
-              <div class="h-32 bg-gradient-to-br from-accent-cyan/5 to-accent-purple/5 p-4 flex items-center justify-center relative">
+              <div class="h-32 bg-gradient-to-br from-accent-cyan/5 to-accent-purple/5 p-4 flex items-center justify-center relative" aria-hidden="true">
                 <div class="w-full max-w-[180px] rounded-lg border border-border-glass/30 bg-bg-primary/50 p-2 space-y-1.5">
                   <div class="flex gap-1"><div class="w-1.5 h-1.5 rounded-full bg-red-400/40"></div><div class="w-1.5 h-1.5 rounded-full bg-yellow-400/40"></div><div class="w-1.5 h-1.5 rounded-full bg-green-400/40"></div></div>
                   <div class="grid grid-cols-4 gap-1">
