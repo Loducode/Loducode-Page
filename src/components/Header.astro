@@ -57,34 +57,35 @@ const navLinks = [
     </div>
   </div>
 
-  <!-- Mobile Menu Overlay -->
-  <div
-    id="mobile-menu"
-    class="fixed inset-0 bg-bg-primary/95 backdrop-blur-xl z-50 hidden flex-col items-center justify-center gap-6"
-  >
-    <button
-      id="mobile-menu-close"
-      class="absolute top-5 right-5 text-text-primary p-2"
-      aria-label={t('header.closeMenu')}
-    >
-      <CloseIcon class="w-7 h-7" />
-    </button>
-    {navLinks.map(({ href, label }) => (
-      <a
-        href={href}
-        class="mobile-nav-link text-2xl font-semibold text-text-secondary hover:text-text-primary transition-colors duration-300"
-      >
-        {label}
-      </a>
-    ))}
-    <div class="mt-2">
-      <LanguageSwitcher />
-    </div>
-    <div class="mt-4">
-      <SocialLinks iconClass="w-5 h-5" />
-    </div>
-  </div>
 </header>
+
+<!-- Mobile Menu Overlay (outside header to avoid backdrop-filter breaking fixed positioning) -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 bg-bg-primary/95 backdrop-blur-xl z-50 hidden flex-col items-center justify-center gap-6"
+>
+  <button
+    id="mobile-menu-close"
+    class="absolute top-5 right-5 text-text-primary p-2"
+    aria-label={t('header.closeMenu')}
+  >
+    <CloseIcon class="w-7 h-7" />
+  </button>
+  {navLinks.map(({ href, label }) => (
+    <a
+      href={href}
+      class="mobile-nav-link text-2xl font-semibold text-text-secondary hover:text-text-primary transition-colors duration-300"
+    >
+      {label}
+    </a>
+  ))}
+  <div class="mt-2">
+    <LanguageSwitcher />
+  </div>
+  <div class="mt-4">
+    <SocialLinks iconClass="w-5 h-5" />
+  </div>
+</div>
 
 <style>
   :global(.header-solid) {
