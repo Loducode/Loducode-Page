@@ -11,7 +11,12 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  integrations: [sitemap()],
+  integrations: [sitemap({
+    serialize(item) {
+      item.lastmod = new Date();
+      return item;
+    },
+  })],
   vite: {
     plugins: [tailwindcss()],
   },
